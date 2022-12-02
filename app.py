@@ -3,6 +3,7 @@ import geopandas as gpd
 from rasterio import features
 from flask import Flask, jsonify
 from flask_cors import CORS
+import json
 
 app = Flask(__name__)
 CORS(app)
@@ -25,11 +26,11 @@ jsonData = gpd.GeoDataFrame.from_features(fc).to_json()
 
 @app.route('/')
 def index():
-    return "<h3>Server running!<h3>"
+    return "<h3>Server running!!<h3>"
 
 @app.route('/geoJSON')
 def pint():
-    return jsonify(jsonData)
+    return json.loads(jsonData)
 
 if __name__ == '__main__':
     app.run(debug= True)
