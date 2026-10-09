@@ -4,7 +4,8 @@ on:
   push:
     branches: ["main"]
     paths:
-      - "frontend/**" # Solo se ejecuta si cambias archivos en frontend
+      - "frontend/**"
+  workflow_dispatch:
 
 permissions:
   contents: read
