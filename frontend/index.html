@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GeoSpatial Analytics - Visualizador Raster GeoTIFF</title>
+    
+    <!-- Leaflet CSS -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    />
+    <!-- Estilos personalizados -->
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <!-- Header Flotante -->
+    <header class="app-header">
+      <h1 class="app-title">GeoSpatial Analytics: Pronóstico de Temperatura Mínima</h1>
+      <p class="app-subtitle">Visualización interactiva de ráster GeoTIFF mediante backend Python & REST API</p>
+      <div class="tech-tags">
+        <span class="tag python">Python / Rasterio</span>
+        <span class="tag python">Flask REST API</span>
+        <span class="tag gis">HTML5 Canvas</span>
+        <span class="tag">Leaflet.js</span>
+      </div>
+    </header>
+
+    <!-- Overlay de Carga / Spinner -->
+    <div id="loader-overlay">
+      <div class="spinner"></div>
+      <div class="loading-text">Procesando matriz GeoTIFF desde el servidor...</div>
+    </div>
+
+    <!-- Contenedor del Mapa -->
+    <div id="map"></div>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <!-- Lógica JavaScript -->
+    <script src="js/app.js"></script>
+  </body>
+</html>
