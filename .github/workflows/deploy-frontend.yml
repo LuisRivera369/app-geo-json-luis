@@ -25,7 +25,10 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
+          name: frontend-page
           path: "./frontend" # Ruta exacta de la web estática
 
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v4
+        with:
+          artifact_name: frontend-page
