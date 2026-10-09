@@ -1,7 +1,7 @@
 import os
 import rasterio
 import numpy as np
-from rasterio.warper import transform_bounds
+from rasterio.warp import transform_bounds  # ← Cambiado .warper por .warp
 from flask import Flask, jsonify
 from flask_cors import CORS
 
@@ -35,8 +35,8 @@ def get_raster_data():
 
         return jsonify({
             "bounds": [
-                [wgs84_bounds[1], wgs84_bounds[0]], # [South (lat_min), West (lng_min)]
-                [wgs84_bounds[3], wgs84_bounds[2]]  # [North (lat_max), East (lng_max)]
+                [wgs84_bounds[1], wgs84_bounds[0]], # [South, West]
+                [wgs84_bounds[3], wgs84_bounds[2]]  # [North, East]
             ],
             "width": dataset.width,
             "height": dataset.height,
