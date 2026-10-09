@@ -4,7 +4,7 @@ on:
   push:
     branches: ["main"]
     paths:
-      - 'frontend/**'  # Solo se ejecuta si cambias archivos en frontend
+      - "frontend/**" # Solo se ejecuta si cambias archivos en frontend
 
 permissions:
   contents: read
@@ -24,7 +24,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: './frontend'  # Ruta exacta de la web estática
+          path: "./frontend" # Ruta exacta de la web estática
 
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v4
