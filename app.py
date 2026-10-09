@@ -12,14 +12,24 @@ TIFF_PATH = os.path.join(os.path.dirname(__file__), 'images', 'Pronostico_Agosto
 @app.route('/api/raster-data')
 def get_raster_data():
     with rasterio.open(TIFF_PATH) as dataset:
-        # Leer primera banda
-        data = dataset.read(1)
-        # Reemplazar valores NoData o nan por None
-        nodata = dataset.nodata if dataset.nodata is not None else 0
-        data = np.where(data == nodata, None, data)
+        # 1. Leer la primera banda como float para manejar decimales y NoData
+        data = dataset.read(1).astype(float)
         
-        # Limitar decimales para reducir el tamaño del JSON
-        data_rounded = np.where(data != None, np.round(data.astype(float), 2), None).tolist()
+        # 2. Obtener el valor de NoData del dataset (o definirlo si es 0 / -9999 / nan)
+        nodata = dataset.nodata
+        
+        # 3. Limpiar valores NoData e Infinitos usando funciones de NumPy
+        if nodata is not None:
+            data[data == nodata] = np.nan
+            
+        # Reemplazar valores no válidos (NaN o Inf) con None explícito de Python
+        cleaned_data = [
+            [
+                None if (np.isnan(val) or np.isinf(val)) else round(float(val), 2)
+                for val in row
+            ]
+            for row in data
+        ]
 
         return jsonify({
             "bounds": [
@@ -28,7 +38,7 @@ def get_raster_data():
             ],
             "width": dataset.width,
             "height": dataset.height,
-            "data": data_rounded
+            "data": cleaned_data
         })
 
 @app.route('/')
