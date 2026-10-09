@@ -4,7 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>GeoSpatial Analytics - Visualizador Raster GeoTIFF</title>
-    
+
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+
     <!-- Leaflet CSS -->
     <link
       rel="stylesheet"
@@ -16,8 +18,13 @@
   <body>
     <!-- Header Flotante -->
     <header class="app-header">
-      <h1 class="app-title">GeoSpatial Analytics: Pronóstico de Temperatura Mínima</h1>
-      <p class="app-subtitle">Visualización interactiva de ráster GeoTIFF mediante backend Python & REST API</p>
+      <h1 class="app-title">
+        GeoSpatial Analytics: Pronóstico de Temperatura Mínima
+      </h1>
+      <p class="app-subtitle">
+        Visualización interactiva de ráster GeoTIFF mediante backend Python &
+        REST API
+      </p>
       <div class="tech-tags">
         <span class="tag python">Python / Rasterio</span>
         <span class="tag python">Flask REST API</span>
@@ -29,7 +36,9 @@
     <!-- Overlay de Carga / Spinner -->
     <div id="loader-overlay">
       <div class="spinner"></div>
-      <div class="loading-text">Procesando matriz GeoTIFF desde el servidor...</div>
+      <div class="loading-text">
+        Procesando matriz GeoTIFF desde el servidor...
+      </div>
     </div>
 
     <!-- Contenedor del Mapa -->
